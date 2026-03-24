@@ -1,0 +1,14 @@
+Testing payloads in verify_payloads.html...
+
+==================================================
+VERIFICATION RESULTS
+==================================================
+Total unique callbacks captured: 7
+SUCCESS: Callback received from: https://1.hackeronce.com/?p=angular
+SUCCESS: Callback received from: https://1.hackeronce.com/?p=iframe
+SUCCESS: Callback received from: https://1.hackeronce.com/?p=img
+SUCCESS: Callback received from: https://1.hackeronce.com/?p=img-onerror
+SUCCESS: Callback received from: https://1.hackeronce.com/?p=input-focus
+SUCCESS: Callback received from: https://1.hackeronce.com/?p=js-protocol
+SUCCESS: Callback received from: https://1.hackeronce.com/x
+==================================================
